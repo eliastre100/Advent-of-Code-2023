@@ -17,6 +17,20 @@ RSpec.describe CalibrationInstruction do
 
         expect(subject.calibration_value).to be 42
       end
+
+      it "return the first and last digit in letter" do
+        subject = described_class.new("two1nine")
+
+        expect(subject.calibration_value).to be 29
+      end
+
+      context "when one literal digit shares characters with an other" do
+        it "considers both digits" do
+          subject = described_class.new("2oneight")
+
+          expect(subject.calibration_value).to be 28
+        end
+      end
     end
   end
 end
