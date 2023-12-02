@@ -22,15 +22,23 @@ RSpec.describe Game do
     end
   end
 
-  describe "#max_known_quatntities" do
+  describe "#min_known_quatntities" do
     it "return the correct number of known quantities for each color" do
       subject = described_class.new("Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red")
 
-      expect(subject.max_known_quantities).to include(
+      expect(subject.min_known_quantities).to include(
                                                 red: 20,
                                                 blue: 6,
                                                 green: 13
                                               )
+    end
+  end
+
+  describe "#minimum_power" do
+    it "returns the correct minimum power of the game" do
+      subject = described_class.new("Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red")
+
+      expect(subject.minimum_power).to be 1560
     end
   end
 end

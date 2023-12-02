@@ -10,11 +10,15 @@ class Game
     end
   end
 
-  def max_known_quantities
+  def min_known_quantities
     {
       blue: @rounds.map(&:blue).max,
       red: @rounds.map(&:red).max,
       green: @rounds.map(&:green).max
     }
+  end
+
+  def minimum_power
+    min_known_quantities.values.inject(&:*)
   end
 end
